@@ -5,8 +5,8 @@ package com.mycompany.app;
  */
 public class App
 {
-private int getal = 4;
-    private final String message = "Hello World!";
+private static  int getal = 4;
+    private static final String message = "Hello World!";
 	
     public App() {}
 
