@@ -11,6 +11,10 @@ pipeline {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
-    }
+    stage('deploy'){
+	 steps{ echo 'zout op'}
+
+        }
+     )
 }
 
