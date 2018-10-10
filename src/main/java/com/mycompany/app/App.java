@@ -11,8 +11,8 @@ private int getal = 4;
     public App() {}
 
     public static void main(String[] args) {
-        System.out.println(new App().getMessage());
-     String fout = message + getal;
+        System.out.println(getal , message);
+    
 
 
 }
