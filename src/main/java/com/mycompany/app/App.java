@@ -5,14 +5,17 @@ package com.mycompany.app;
  */
 public class App
 {
-
+private int getal = 4;
     private final String message = "Hello World!";
-dsfsadfsdafsdf
+	
     public App() {}
 
     public static void main(String[] args) {
         System.out.println(new App().getMessage());
-    }
+     String fout = message + getal;
+
+
+}
 
     private final String getMessage() {
         return message;
