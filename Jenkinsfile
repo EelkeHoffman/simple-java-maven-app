@@ -11,6 +11,12 @@ pipeline {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
+stage('SonarQube analysis') {
+    withSonarQubeEnv('scanner') {
+      // requires SonarQube Scanner for Maven 3.2+
+      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
+    }
+  }
     stage('deploy'){
 	 steps{ echo 'zout op'}
 
@@ -20,12 +26,6 @@ pipeline {
 	sh 'mvn test'
 	}
 post{always{ junit 'target/surefire-reports/*.xml'}
-stage('SonarQube analysis') {
-    withSonarQubeEnv('My SonarQube Server') {
-      // requires SonarQube Scanner for Maven 3.2+
-      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
-    }
-  }
 }
 
 	}
