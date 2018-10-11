@@ -13,7 +13,7 @@ pipeline {
                     withMaven(maven:'Maven 3.5') {
                         sh 'mvn clean package sonar:sonar'
             }
-        }
+        }}}
     stage('deploy'){
 	 steps{ echo 'zout op'}
 
