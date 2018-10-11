@@ -8,16 +8,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                withSonarQubeEnv('scanserver') {
+                    // Optionally use a Maven environment you've configured already
+                    withMaven(maven:'Maven 3.5') {
+                        sh 'mvn clean package sonar:sonar'
             }
         }
-stage('SonarQube analysis') {
-steps{
-    withSonarQubeEnv('scanner') {
-      // requires SonarQube Scanner for Maven 3.2+
-      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
-    }
-  }
     stage('deploy'){
 	 steps{ echo 'zout op'}
 
