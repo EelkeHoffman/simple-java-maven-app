@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                withSonarQubeEnv('scansferver') {
+                withSonarQubeEnv('scanserver') {
                     // Optionally use a Maven environment you've configured already
                     sh 'mvn -B -DskipTests clean package'
         }}}
