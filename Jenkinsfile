@@ -6,7 +6,7 @@ pipeline {
         }
     }
     stages {
-        stage('Build and Code Wuality Test') {
+        stage('Build and Code Quality Test') {
             steps {
                 withSonarQubeEnv('scanserver') {
                     // Optionally use a Maven environment you've configured already
