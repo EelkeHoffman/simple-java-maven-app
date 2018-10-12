@@ -11,19 +11,16 @@ pipeline {
                 withSonarQubeEnv('scanserver') {
                     // Optionally use a Maven environment you've configured already
                     sh 'mvn -B clean package sonar:sonar'
-        }}}
-    stage('deploy'){
-	 steps{ echo 'zout op'}
-
         }
-    stage('test'){
+			}
+				}
+    stage('unittests'){
 	steps{
 	sh 'mvn test'
-	}
-post{always{ junit 'target/surefire-reports/*.xml'}
-}
+	
+post{always{ junit 'target/surefire-reports/*.xml'}}
 
-	}
+	}}
 
 	
 	
