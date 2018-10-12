@@ -16,7 +16,7 @@ pipeline {
 				}
     stage('unittests'){
 	steps{
-	sh 'mvn test'
+	sh './gradlew check'
 	junit 'target/surefire-reports/*.xml'
 	}
 
