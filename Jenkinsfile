@@ -10,7 +10,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('scanserver') {
                     // Optionally use a Maven environment you've configured already
-                    sh 'mvn -B clean package sonar:sonar'
+                    sh 'mvn -B clean package'
         }
 			}
 				}
