@@ -26,7 +26,7 @@ pipeline {
 	def uploadSpec = """{
   "files": [
     {
-      "pattern": "simple-java-maven-app/**.txt",
+      "pattern": "simple-java-maven-app/*.*",
       "target": "bazinga-repo/froggy-files/"
     }
  ]
