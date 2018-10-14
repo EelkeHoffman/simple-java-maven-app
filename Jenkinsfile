@@ -30,7 +30,7 @@ rtMaven.deployer server: server, releaseRepo: 'libs-release-local', snapshotRepo
 
 rtMaven.deployer.artifactDeploymentPatterns.addInclude(".txt")	
 
-def buildInfo = rtMaven.run pom: 'simple-java-maven-app/pom.xml', goals: 'clean install'
+def buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
 server.publishBuildInfo buildInf
 
 
