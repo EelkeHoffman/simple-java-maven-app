@@ -21,6 +21,21 @@ pipeline {
 	}
 
 	}
+	stage('upload artifacts')
+	steps{ def server = Artifactory.newServer url: 'http://192.168.50.129:8081', username: 'admin', password: 'password'
+	def uploadSpec = """{
+  "files": [
+    {
+      "pattern": "simple-java-maven-app/**.txt",
+      "target": "bazinga-repo/froggy-files/"
+    }
+ ]
+}"""
+server.upload(uploadSpec)
+	
+	
+	}
+	
 
 	
 	
