@@ -28,7 +28,7 @@ def server = Artifactory.server('art1')
   "files": [
     {
       "pattern": "simple-java-maven-app/*.*",
-      "target": "bazinga-repo/froggy-files/"
+      "target": "libs-snapshot"
     }
  ]
 }"""
