@@ -25,7 +25,7 @@ pipeline {
 	steps { script{ 
 def server = Artifactory.server('art1')
 def rtMaven = Artifactory.newMavenBuild()
-
+rtMaven.tool = 'mav'
 rtMaven.deployer server: server, releaseRepo: 'libs-release-local', snapshotRepo: 'libs-snapshot-local'
 
 rtMaven.deployer.artifactDeploymentPatterns.addInclude(".txt")	
