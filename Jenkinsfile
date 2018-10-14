@@ -27,7 +27,7 @@ def server = Artifactory.server('art1')
 	def uploadSpec = """{
   "files": [
     {
-      "pattern": "simple-java-maven-app/README.md",
+      "pattern": "simple-java-maven-app/*.save",
       "target": "libs-snapshot"
     }
  ]
