@@ -24,16 +24,15 @@ pipeline {
 	stage('upload artifacts'){
 	steps { script{ 
 def server = Artifactory.server('art1')
-	def uploadSpec = """{
-  "files": [
-    {
-      "pattern": "simple-java-maven-app/*.save",
-      "target": "libs-snapshot"
-    }
- ]
-}"""
-def buildInfo2 = server.upload spec: uploadSpec
-server.publishBuildInfo buildInfo2
+def rtMaven = Artifactory.newMavenBuild()
+
+rtMaven.deployer server: server, releaseRepo: 'libs-release-local', snapshotRepo: 'libs-snapshot-local'
+
+rtMaven.deployer.artifactDeploymentPatterns.addInclude(".txt")	
+
+def buildInfo = rtMaven.run pom: 'simple-java-maven-app/pom.xml', goals: 'clean install'
+server.publishBuildInfo buildInf
+
 
 	
 	
@@ -44,4 +43,3 @@ server.publishBuildInfo buildInfo2
 	
      }
 }}
-
