@@ -32,7 +32,9 @@ def server = Artifactory.server('art1')
     }
  ]
 }"""
-server.upload(uploadSpec)}
+def buildInfo2 = server.upload spec: uploadSpec
+server.publishBuildInfo buildInfo2
+
 	
 	
 	}}
