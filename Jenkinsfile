@@ -29,6 +29,7 @@ pipeline {
 				rtMaven.tool = 'mav'
 				rtMaven.deployer server: server, releaseRepo: 'libs-release-local', snapshotRepo: 'libs-snapshot-local'
 				rtMaven.deployer.artifactDeploymentPatterns.addInclude("**.txt")	
+				rtMaven.deployer.deployArtifacts = true
 
 			def buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
 			server.publishBuildInfo buildInfo
