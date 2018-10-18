@@ -32,6 +32,7 @@ pipeline {
 
 			def buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
 			buildInfo.env.capture = true
+			rtMaven.deployer.deployArtifacts buildInfo
 			server.publishBuildInfo buildInfo
 
 
