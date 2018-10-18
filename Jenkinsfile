@@ -27,6 +27,7 @@ pipeline {
 		def buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
 				def server = Artifactory.server('art1')
 				def rtMaven = Artifactory.newMavenBuild()
+				rtMaven.deployer.deployArtifacts buildInfo
 				rtMaven.tool = 'mav'
 				rtMaven.deployer server: server, releaseRepo: 'libs-release-local', snapshotRepo: 'libs-snapshot-local'
 				rtMaven.deployer.artifactDeploymentPatterns.addInclude("**.txt")	
@@ -34,7 +35,7 @@ pipeline {
 				
 
 			
-			rtMaven.deployer.deployArtifacts buildInfo
+			
 			server.publishBuildInfo buildInfo
 
 
