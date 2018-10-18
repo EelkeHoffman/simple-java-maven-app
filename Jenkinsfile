@@ -24,18 +24,14 @@ pipeline {
 	stage('upload artifacts'){
 	steps { 
 		script{ 
-		def buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
 				def server = Artifactory.server('art1')
 				def rtMaven = Artifactory.newMavenBuild()
-			
 				rtMaven.tool = 'mav'
 				rtMaven.deployer server: server, releaseRepo: 'libs-release-local', snapshotRepo: 'libs-snapshot-local'
 				rtMaven.deployer.artifactDeploymentPatterns.addInclude("**.txt")	
-				rtMaven.deployer.deployArtifacts = true
-				
 
-			
-			
+			def buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
+			buildInfo.env.capture = true
 			server.publishBuildInfo buildInfo
 
 
