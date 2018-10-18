@@ -17,10 +17,15 @@ pipeline {
     stage('unittests'){
 	steps{
 	sh 'mvn test'
-	junit 'target/surefire-reports/*.xml'
+//	junit 'target/surefire-reports/*.xml'
 	}
 
 	}
+	post {
+        always {
+            junit 'build/reports/**/*.xml'
+        }
+    }
 	stage('upload artifacts'){
 	steps { 
 		script{ 
