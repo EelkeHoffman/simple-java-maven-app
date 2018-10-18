@@ -21,11 +21,7 @@ pipeline {
 	}
 
 	}
-	post {
-        always {
-            junit 'build/reports/**/*.xml'
-        }
-    }
+	
 	stage('upload artifacts'){
 	steps { 
 		script{ 
@@ -51,5 +47,10 @@ pipeline {
 	
 	
 	}
-	}	
+	}
+post {
+        always {
+            junit 'build/reports/**/*.xml'
+        }
+    }	
 }
