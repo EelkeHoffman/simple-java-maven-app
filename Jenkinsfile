@@ -17,7 +17,7 @@ pipeline {
     stage('unittests'){
 	steps{
 	sh 'mvn test'
-//	junit 'target/surefire-reports/*.xml'
+//	test
 	}
 
 	}
